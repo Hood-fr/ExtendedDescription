@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Extended Description
-Version: auto
+Version: 2.9.0
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
