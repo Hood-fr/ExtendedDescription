@@ -146,7 +146,8 @@ function get_extended_desc($desc, $param='')
     {
       $url = $m1[1];
     }
-    if (is_admin())
+    
+    if (is_admin() and !$conf['ExtendedDescription']['redirect_admins'])
     {
       global $header_notes;
       load_language('plugin.lang', EXTENDED_DESC_PATH);
@@ -154,7 +155,11 @@ function get_extended_desc($desc, $param='')
     }
     else
     {
-      redirect($url);
+      // never redirect on the API. It might break pwg.categories.getAdminList, for example.
+      if (script_basename() != 'ws')
+      {
+        redirect($url);
+      }
     }
   }
 

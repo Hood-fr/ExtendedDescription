@@ -1,8 +1,8 @@
 <?php
 // +-----------------------------------------------------------------------+
-// | PhpWebGallery - a PHP based picture gallery                           |
-// | Copyright (C) 2002-2003 Pierrick LE GALL - pierrick@phpwebgallery.net |
-// | Copyright (C) 2003-2007 PhpWebGallery Team - http://phpwebgallery.net |
+// | Lexiglot - A PHP based translation tool                               |
+// +-----------------------------------------------------------------------+
+// | Copyright(C) 2011-2013 Damien Sorel       http://www.strangeplanet.fr |
 // +-----------------------------------------------------------------------+
 // | This program is free software; you can redistribute it and/or modify  |
 // | it under the terms of the GNU General Public License as published by  |
@@ -19,7 +19,6 @@
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
 
-// Recursive call
 $url = '../';
 header( 'Request-URI: '.$url );
 header( 'Content-Location: '.$url );
