@@ -270,6 +270,22 @@ function add_bottom_description()
 }
 
 /**
+ * purge "as early as possible" the list of album thumbnails
+ */
+function ext_loc_begin_index_category_thumbnails_query($query)
+{
+  global $conf;
+
+  $search = '-- after conditions';
+
+  return str_replace(
+    $search,
+    "AND name NOT LIKE '%".$conf['ExtendedDescription']['not_visible']."%'\n".$search,
+    $query
+  );
+}
+
+/**
  * Remove categories with <!--hidden-->
  */
 function ext_remove_cat($tpl_var)
@@ -328,7 +344,7 @@ function ext_remove_image($tpl_var, $pictures)
   $i=0;
   while ($i<count($tpl_var))
   {
-    if (substr_count($pictures[$i]['name'], $conf['ExtendedDescription']['not_visible']))
+    if (substr_count($pictures[$i]['name'] ?? '', $conf['ExtendedDescription']['not_visible']))
     {
       array_splice($tpl_var, $i, 1);
       array_splice($pictures, $i, 1);
