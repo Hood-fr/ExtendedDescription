@@ -275,6 +275,16 @@ function extdesc_get_slider($param)
 {
   global $template, $conf;
 
+  if (!isset($template->smarty->registered_plugins['modifier']['max']))
+  {
+    $template->smarty->registerPlugin('modifier', 'max', 'max');
+  }
+
+  if (!isset($template->smarty->registered_plugins['modifier']['min']))
+  {
+    $template->smarty->registerPlugin('modifier', 'min', 'min');
+  }
+
   $default_params = array(
     'album' =>     array('\d+', null),
     'nb_images' => array('\d+', 10),
@@ -330,7 +340,7 @@ SELECT name, image_order
     }
     else if (empty($order_by))
     {
-      $order_by = str_replace('ORDER BY ', null, $conf['order_by_inside_category']);
+      $order_by = str_replace('ORDER BY ', '', $conf['order_by_inside_category']);
     }
 
     // get pictures ids
